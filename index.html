@@ -9,6 +9,7 @@
 </head>
 <body>
 	<div id="app">
+		<input type="text" v-on:input="changeGreeting"></input>
 		<p>{{ greeting }}</p>
 	</div>
 	<script>
@@ -16,6 +17,11 @@
 			el: '#app',
 			data: {
 				greeting: 'Hello World!'
+			},
+			methods: {
+				changeGreeting: function(event) {
+					this.greeting = event.target.value;
+				}
 			}
 		})
 	</script>

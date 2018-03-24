@@ -9,7 +9,8 @@
 </head>
 <body>
 	<div id="app">
-		<p>{{ sayHello() }} - <a :href="link"  target='_blank'>Doodle</a></p>
+		<p v-once> {{ greeting }}</p>
+		<p>{{ sayHelloWorld() }} - <a :href="link"  target='_blank'>Doodle</a></p>
 	</div>
 	<script>
 		new Vue({
@@ -19,11 +20,10 @@
 				link: "http://doodle.com"
 			},
 			methods: {
-				sayHello: function() {
-					return 'hello!';
-				},
 				sayHelloWorld: function() {
+					this.greeting = "hallöchen";
 					return this.greeting;
+					// all usages of greeting get rerendered to "hallöchen" unless we use v-once
 				}
 			}
 		})

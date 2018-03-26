@@ -8,24 +8,36 @@
 	<script src="vue.js"></script>
 </head>
 <body>
-	<div id="app">
-		<p v-once> {{ greeting }}</p>
-		<p>{{ sayHelloWorld() }} - <a :href="link"  target='_blank'>Doodle</a></p>
-		<p v-html="finishedLink">{{ finishedLink }}</p>
-	</div>
+		<div id="exercise">
+		   <!-- 1) Fill the <p> below with your Name and Age - using Interpolation -->
+			<p>VueJS is pretty cool - {{name}} ({{age}})</p>
+			<!-- 2) Output your age, multiplied by 3 -->
+			<p>{{toInt()}}</p>
+			<!-- 3) Call a function to output a random whole number between 1 and 10 (Math.random()) -->
+			<p>{{Math.floor(Math.random() * 10)}}</p>
+			<!-- 4) Search any image on Google and output it here by binding the "src" attribute -->
+			<div>
+				<img style="width:100px;height:100px" :src="img">
+			</div>
+			<!-- 5) Pre-Populate this input with your name (set the "value" attribute) -->
+			<div>
+				<input type="text" :value="name" v-on:input="sayIt">
+			</div>
+		</div>
 	<script>
 		new Vue({
-			el: '#app',
+			el: '#exercise',
 			data: {
-				greeting: 'Hello World!',
-				link: "http://doodle.com",
-				finishedLink: '<a href="http://doodle.com">Doodle</a>'
+				name: 'Bard',
+				age: '12',
+				img: 'https://media.giphy.com/media/1kjEG4Om13xMIGNToa/giphy.gif'
 			},
 			methods: {
-				sayHelloWorld: function() {
-					this.greeting = "hallöchen";
-					return this.greeting;
-					// all usages of greeting get rerendered to "hallöchen" unless we use v-once
+				toInt: function() {
+					return Number(this.age) * 3;
+				},
+				sayIt: function(event) {
+					this.name = event.target.value;
 				}
 			}
 		})

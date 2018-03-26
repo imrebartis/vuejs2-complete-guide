@@ -11,13 +11,15 @@
 	<div id="app">
 		<p v-once> {{ greeting }}</p>
 		<p>{{ sayHelloWorld() }} - <a :href="link"  target='_blank'>Doodle</a></p>
+		<p v-html="finishedLink">{{ finishedLink }}</p>
 	</div>
 	<script>
 		new Vue({
 			el: '#app',
 			data: {
 				greeting: 'Hello World!',
-				link: "http://doodle.com"
+				link: "http://doodle.com",
+				finishedLink: '<a href="http://doodle.com">Doodle</a>'
 			},
 			methods: {
 				sayHelloWorld: function() {

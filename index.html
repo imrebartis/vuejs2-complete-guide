@@ -9,9 +9,10 @@
 </head>
 <body>
 		<div id="app">
-		  <button v-on:click="increase"></button>
+		  <button v-on:click="increase(2, $event)"></button>
 		  <p>{{counter}}</p>
 		  <p v-on:mousemove="updateCoordinates">Coordinates: {{x}} / {{y}}</p>
+		  <span v-on:mousemove.stop>DEAD SPOT</span>
 		</div>
 	<script>
 		new Vue({
@@ -22,13 +23,13 @@
 				y: 0
 			},
 			methods: {
-				increase: function() {
-					this.counter++;
+				increase: function(step, event) {
+					this.counter += step;
 				},
 				updateCoordinates: function(event) {
 					this.x = event.clientX;
 					this.y = event.clientY;
-				}	
+				}
 			}
 		})
 	</script>

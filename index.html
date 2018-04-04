@@ -8,30 +8,35 @@
 	<script src="vue.js"></script>
 </head>
 <body>
-		<div id="exercise">
-		  <div>
-			<button v-on:click="alertMe">Show Alert</button>
-		  </div>
-		  <div>
-				<input type="text" :value="value" v-on:keydown.enter="grabValue">
-				<p>{{ value }}</p>
-		  </div>
+		<div id="app">
+			<button v-on:click="increase(2, $event)"></button>
+			<button v-on:click="counter++">Click moi!</button>
+		  <p>{{counter*2 > 10 ? counter : "Too low to mention"}}</p>
+		  <p v-on:mousemove="updateCoordinates">Coordinates: {{x}} / {{y}}</p>
+		  <span v-on:mousemove.stop>DEAD SPOT</span>
+		  <input type="text" v-on:keyup.enter.space="alertMe">
 		</div>
 	<script>
 		new Vue({
-			el: '#exercise',
+			el: '#app',
 			data: {
-				value: ''
+				counter: 0,
+				x: 0,
+				y: 0
 			},
 			methods: {
+				increase: function(step, event) {
+					this.counter += step;
+				},
+				updateCoordinates: function(event) {
+					this.x = event.clientX;
+					this.y = event.clientY;
+				},
 				alertMe: function(){
 					alert('alert!')
-				},
-				grabValue: function(e) {
-					this.value = e.target.value;
 				}
 			}
-		});
+		})
 	</script>
 </body>
 </html>

@@ -9,33 +9,16 @@
 </head>
 <body>
 		<div id="app">
-			<button v-on:click="increase(2, $event)"></button>
-			<button v-on:click="counter++">Click moi!</button>
-		  <p>{{counter*2 > 10 ? counter : "Too low to mention"}}</p>
-		  <p v-on:mousemove="updateCoordinates">Coordinates: {{x}} / {{y}}</p>
-		  <span v-on:mousemove.stop>DEAD SPOT</span>
-		  <input type="text" v-on:keyup.enter.space="alertMe">
+			<input type="text" v-model="name"/>
+			<p>{{name}}</p>
 		</div>
 	<script>
 		new Vue({
 			el: '#app',
 			data: {
-				counter: 0,
-				x: 0,
-				y: 0
-			},
-			methods: {
-				increase: function(step, event) {
-					this.counter += step;
-				},
-				updateCoordinates: function(event) {
-					this.x = event.clientX;
-					this.y = event.clientY;
-				},
-				alertMe: function(){
-					alert('alert!')
-				}
+				name: 'Charlemagne'
 			}
+		
 		})
 	</script>
 </body>

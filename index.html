@@ -13,23 +13,30 @@
 				<div 
 					class="demo"
 					@click="attachRed=!attachRed"
+				:class="divClasses"></div>
+				<div 
+					class="demo"
+					@click="attachRed=!attachRed"
 				:class="{red: attachRed}"></div>
 				<div 
 					class="demo"
-					@click="attachBeige=!attachBeige"
-				:class="{beige: attachBeige}"></div>
-				<div 
-					class="demo"
-					@click="attachGreen=!attachGreen"
-				:class="{green: attachGreen}"></div>
+					@click="attachRed=!attachRed"
+					:class="divClasses"
+				></div>
 		</div>
 	<script>
 		new Vue({
 			el: '#app',
 			data: {
-				attachRed: false,
-				attachBeige: false,
-				attachGreen: false
+				attachRed: false
+			},
+			computed: {
+				divClasses: function() {
+					return {
+					red: this.attachRed,
+					green: !this.attachRed
+				}
+				}
 			}
 		})
 	</script>

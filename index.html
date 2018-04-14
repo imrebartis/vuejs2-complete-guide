@@ -9,27 +9,37 @@
 </head>
 <body>
 
-		<div id="app">
-				<div class="demo" :style="{backgroundColor: color}"></div>
-				<div class="demo" :style="myStyle"></div>
-				<div class="demo" :style="[myStyle, {height: width + 'px'}]"></div>
-				<hr>
-				<input type="text" v-model="color">
-				<input type="text" v-model="width">
+	<div id="exercise">
+		<!-- 1) Start the Effect with the Button. The Effect should alternate the "highlight" & "shrink" class on each new setInterval tick (attach respective class to the div with id "effect" below) -->
+		<div>
+		  <button @click="startEffect">Start Effect</button>
+		  <div id="effect" :class="effectClasses"></div>
 		</div>
+		<!-- 2) Create a couple of CSS classes and attach them via the array syntax -->
+		<div>I got no class :(</div>
+		<!-- 3) Let the user enter a class (create some example classes) and attach it -->
+	  </div>
 	<script>
 		new Vue({
-			el: '#app',
+			el: '#exercise',
 			data: {
-				color: 'green',
-				width: 100
+				// effect: ''
+				effectClasses:{
+					highlight: false,
+					shrink: true
+				}
 			},
-			computed: {
-				myStyle: function() {
-					return {
-						backgroundColor: this.color,
-						width: this.width + 'px'
-					}
+			methods: {
+				// startEffect: function() {
+				// 	this.effect = this.effect === "highlight" ? "shrink" : "highlight"}
+				// }
+				startEffect: function() {
+					var self = this;
+					setInterval(function() {
+						self.effectClasses.highlight = !self.effectClasses.highlight;
+						self.effectClasses.shrink = !self.effectClasses.shrink;
+						console.log('startEffect firing')
+					}, 3000);
 				}
 			}
 		})

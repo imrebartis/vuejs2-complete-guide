@@ -5,12 +5,53 @@
   }
   
   .highlight {
-    background-color: red;
+    background-color: aquamarine !important;
     width: 200px !important;
   }
   
   .shrink {
-    background-color: gray;
+    background-color: greenyellow !important;
     width: 50px !important;
   }
+
+  .smoothie {
+    border: 1px solid black;
+    color: white;
+    width: 150px !important;
+    height: 150px !important;
+    background-color: #bada55 !important;
+  }
+
+  .brown {
+      background-color: brown !important;
+      width: 70px;
+      height: 70px;
+  }
   
+  .yellow {
+    background-color: yellow !important;
+    width: 150px;
+    height: 150px;
+  }
+
+  .pink {
+      background-color: pink !important;
+      width: 150px;
+      height: 150px;
+  }
+
+  .newDiv {
+    background-color: magenta;
+    width: 150px;
+    height: 150px;
+  }
+
+  #none {
+      display: none;
+  }
+
+  .progress-bar {
+    width: 200px;
+    height: 20px;
+    border: 1px solid black;
+  }

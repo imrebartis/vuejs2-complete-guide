@@ -19,19 +19,29 @@ new Vue({
                 return;
             }
 
-            this.playerHealth -= this.calculateDamage(5, 12);
-            //check if you won:
-            this.checkWin();
+            this.monsterAttacks()
 
         },
         specialAttack: function() {
+            this.monsterHealth -= this.calculateDamage(10, 20);
 
+            if (this.checkWin()) {
+                //game's over
+                return;
+            }
+
+            this.monsterAttacks()
         },
         heal: function() {
 
         },
         giveUp: function() {
 
+        },
+        monsterAttacks: function() {
+            this.playerHealth -= this.calculateDamage(5, 12);
+            //check if you won:
+            this.checkWin();
         },
         calculateDamage: function(min, max) {
              // getting a random number btw 3 & 10:

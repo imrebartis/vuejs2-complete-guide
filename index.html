@@ -4,25 +4,18 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>VueJS</title>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
 	<link rel="stylesheet" href="style.css">
-	<script src="vue.js"></script>
 </head>
 <body>
-
-	<div id="app">
-		<p v-if="show">You can see me! <span>Huha!</span></p>
-		<p v-else>Now you see me!</p>
-		<p>Do you also see me?</p>
-		<button @click="show = !show">Switch</button>
-	  </div>
+	<div id="app1">
+		<h1 ref="heading">{{ title }}</h1>
+		<button v-on:click="show">Show Paragraph</button>
+		<p v-if="showParagraph">This is not always visible</p>
 	</div>
-	<script>
-	new Vue({
-		el: '#app',
-		data: {
-			show: true
-		}
-	});
-    </script>
+	<div id="app2">
+			<h1 ref="heading">{{ title }}</h1>
+	</div>
+<script src="app.js"></script>
 </body>
 </html>

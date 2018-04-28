@@ -26,7 +26,8 @@ var vm1 = new Vue({
   });
 
   setTimeout(function() {
-    vm1.title = "Changed by Timer"
+    vm1.title = "Changed by Timer";
+    vm1.show()
   }, 3000);
 
   var vm2 = new Vue({
@@ -36,7 +37,7 @@ var vm1 = new Vue({
     },
     methods: {
       onChange: function() {
-        vm1.title = "Changed"
+        vm1.title = "Changed";
       }
     }
   })

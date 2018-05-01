@@ -4,7 +4,6 @@ var data = {
 }
 
 var vm1 = new Vue({
-    el: '#app1',
     data: data,
     methods: {
       show: function() {
@@ -28,6 +27,8 @@ var vm1 = new Vue({
     }
   });
 
+  vm1.$mount('#app1');
+
   console.log(vm1.$data === data)
   // this will be overwrittenby setTimeout's vm1.show():
   vm1.$refs.myButton.innerText = "new stuff"
@@ -48,3 +49,11 @@ var vm1 = new Vue({
       }
     }
   })
+
+  var vm3 = new Vue({
+    template: '<h1>Hi</h1>'
+  })
+
+  // vm3.$mount('#app3')
+  vm3.$mount()
+  document.getElementById('app3').appendChild(vm3.$el)

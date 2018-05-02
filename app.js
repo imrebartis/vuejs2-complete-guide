@@ -3,6 +3,10 @@ var data = {
   showParagraph: false
 }
 
+Vue.component('hello', {
+  template: '<h1>Hello!!!</h1>'
+});
+
 var vm1 = new Vue({
     data: data,
     methods: {
@@ -51,7 +55,7 @@ var vm1 = new Vue({
   })
 
   var vm3 = new Vue({
-    template: '<h1>Hi</h1>'
+    template: '<h1>Hello</h1>'
   })
 
   // vm3.$mount('#app3')

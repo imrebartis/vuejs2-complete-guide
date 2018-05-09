@@ -1,12 +1,8 @@
 <template>
-  <div id="app">
-    <h1>Hihi</h1>
-  </div>
+ <app-server-status></app-server-status>
 </template>
 
 <script>
-export default {
-}
 </script>
 
 <style>

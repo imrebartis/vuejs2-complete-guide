@@ -7,7 +7,7 @@
         </div>
         <hr>
         <div class="row">
-            <app-servers></app-servers>
+            <servers></servers>
             <app-server-details></app-server-details>
         </div>
         <hr>
@@ -25,9 +25,9 @@ import ServerDetails from './components/Server/ServerDetails.vue'
 
 export default {
     components: {
-        'app-header': Header,
+        appHeader: Header,
         'app-footer': Footer,
-        'app-servers': Servers,
+        Servers,
         'app-server-details': ServerDetails
     }
 }

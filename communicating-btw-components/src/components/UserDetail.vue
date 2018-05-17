@@ -8,13 +8,19 @@
 
 <script>
     export default {
-        props: ['name'],
+        props: {
+            name: {
+                type: String,
+                // required: true,
+                default: 'Töhötöm'
+            }
+        },
         methods: {
             switchName() {
                 return this.name.split("").reverse().join("")
             }
         }
-    }
+     }
 </script>
 
 <style scoped>

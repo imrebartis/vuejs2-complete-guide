@@ -4,6 +4,8 @@
         <p>I'm an awesome User!</p>
         <button @click="changeName">Change my name</button>
         <p>Name is {{ name }}   </p>
+        <!-- age is passed directly from one sibling to the other, thus age in parent component doesn't change, see below -->
+         <p>Age is {{ age }}   </p>
         <hr>
         <div class="row">
             <div class="col-xs-12 col-sm-6">

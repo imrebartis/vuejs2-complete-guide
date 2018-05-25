@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>A marvelous quote.</p>
+        <slot></slot>
     </div>
 </template>
 

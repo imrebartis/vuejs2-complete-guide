@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "npm": "^6.1.0",
     "vue": "^2.0.1"
   },
   "devDependencies": {

@@ -23,8 +23,10 @@ import Quote from './Quote.vue'
       },
       methods: {
         createNew() {
-          this.$emit('quoteAdded', this.quote)
-          this.quote = ''
+          if (this.quote.trim() != '') {
+             this.$emit('quoteAdded', this.quote)
+              this.quote = ''
+          }
         }
       }
     }

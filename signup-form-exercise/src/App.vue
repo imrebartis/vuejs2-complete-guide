@@ -13,14 +13,11 @@
                     <!-- Exercise 2 -->
                     <!-- Only display the Form if it has NOT been submitted -->
                     <!-- Display the Data Summary ONCE the Form HAS been submitted -->
-                    <div class="form-group">
-                        <label for="">First name</label>
-                        <input type="text" class="form-control" v-model="firstName">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Last name</label>
-                        <input type="text" class="form-control" v-model="lastName">
-                    </div>
+
+                    <!-- Exercise 3 -->
+                    <!-- Edit the Example from above and create a custom "Full Name" Control -->
+                    <!-- which still holds the First Name and Last Name Input Field -->
+                    <app-full-name v-model="fullName"></app-full-name>
                      <div class="form-group">
                         <label for="">Email</label>
                         <input type="email" class="form-control" v-model="email">
@@ -41,10 +38,6 @@
                         type="submit"
                         @click.prevent="submitted = true"
                         class="btn btn-primary">Submit the form</button>
-
-                    <!-- Exercise 3 -->
-                    <!-- Edit the Example from above and create a custom "Full Name" Control -->
-                    <!-- which still holds the First Name and Last Name Input Field -->
                 </div>
             </div>
         </form>
@@ -56,7 +49,7 @@
                         <h4>Your Data</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Full Name: {{firstName}} {{lastName}}</p>
+                        <p>Full Name: {{fullName}}</p>
                         <p>Mail: {{email}}</p>
                         <p>Password: {{password}}</p>
                         <p>Store in Database?: {{storeData}}</p>
@@ -68,16 +61,19 @@
 </template>
 
 <script>
+    import FullName from './Fullname.vue'
     export default {
         data() {
             return {
-                firstName: '',
-                lastName: '',
+                fullName: 'Ikaban Fergusson',
                 email: '',
                 password: '',
                 storeData: 'Yes',
                 submitted: false
             }
+        },
+        components: {
+            appFullName: FullName
         }
     }
 </script>

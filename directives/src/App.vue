@@ -12,7 +12,7 @@
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                     <h1>custom directives</h1>
                         <p v-highlight:background.delayed="'red'">color this</p>
-                        <p v-local-highlight.delayed="'red'">color this, too</p>
+                        <p v-local-highlight.delayed.blink="'red'">color this, too</p>
                 </div>
             </div>
     </div>
@@ -25,19 +25,38 @@
                 bind(el, binding, vnode) {
                     var delay = 0
                     if (binding.modifiers['delayed']) {
-                    delay = 3000
+                      delay = 3000
                     }
-                    setTimeout(() => {
-                    // el.style.backgroundColor = 'green'
-                    // el.style.backgroundColor = binding.value
-                    // if v-highlight:background:
-                    if (binding.arg === "background") {
-                        el.style.backgroundColor = binding.value
+                    if (binding.modifiers['blink']) {
+                        let mainColor = binding.value
+                        let secondColor = 'blue'
+                        let currentColor = mainColor
+
+                        setTimeout(() => {
+                            setInterval(() => {
+                                currentColor === secondColor ? currentColor = mainColor : currentColor = secondColor
+                                 if (binding.arg === "background") {
+                                        el.style.backgroundColor = currentColor
+                                 } else {
+                                    // if v-highlight:
+                                    el.style.color = currentColor
+                                }
+                            }, 1000)
+                        }, delay)
                     } else {
-                        // if v-highlight:
-                        el.style.color = binding.value
+                        setTimeout(() => {
+                            // el.style.backgroundColor = 'green'
+                            // el.style.backgroundColor = binding.value
+                            // if v-highlight:background:
+                            if (binding.arg === "background") {
+                                el.style.backgroundColor = binding.value
+                            } else {
+                                // if v-highlight:
+                                el.style.color = binding.value
+                            }
+                        }, delay)
                     }
-                    }, delay)
+                    
                 }
             }
         }

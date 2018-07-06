@@ -8,7 +8,8 @@
                 <br>
                 <br>
                 <transition name="fade">
-                    <div class="alert alert-info" v-if="show">this is lö info</div>
+                    <!-- v-show only triggers the display property (it doesn't remove or attach elements) -->
+                    <div class="alert alert-info" v-show="show">this is lö info</div>
                 </transition>
                  <transition name="slide" type="animation">
                     <div class="alert alert-info" v-if="show">this is lö info</div>

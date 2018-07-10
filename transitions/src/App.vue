@@ -27,6 +27,11 @@
                 >
                     <div class="alert alert-info" v-if="show">this is lö info</div>
                 </transition>
+                <!-- mode out-in: let old element animate out first & then animate new element in -->
+                <transition :name="alertAnimation" mode="out-in">
+                    <div class="alert alert-info" v-if="show" key="info">this is lö info</div>
+                     <div class="alert alert-warning" v-else key="warning">this is lö warning</div>
+                </transition>
             </div>
         </div>
     </div>
@@ -77,7 +82,7 @@
 
     .slide-leave-active {
         animation: slide-out 1s ease-out forwards;
-        transition: opacity 3s;
+        transition: opacity 1s;
         opacity: 0;
     }
 

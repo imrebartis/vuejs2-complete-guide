@@ -58,12 +58,17 @@
                     <component :is="selectedComponent"></component>
                 </transition>
                 <button class="btn btn-primary" @click="addItem">Add item</button>
-                <ul class="list-group">
-                    <li 
-                        class="list-group-item"
-                        v-for="(number, index) in numbers"
-                        @click="removeItem(index)"
-                        style="cursor:pointer">{{number}}</li>
+                <!-- transition-groups, as opposed to transitions, are rendered in the DOM, by default as a span (tag="TAG" is how you change the default) -->
+                 <ul class="list-group">
+                    <transition-group tag="div" name="slide">
+                            <li 
+                                class="list-group-item"
+                                v-for="(number, index) in numbers"
+                                @click="removeItem(index)"
+                                style="cursor:pointer"
+                                :key="number">{{number}}
+                            </li>
+                    </transition-group>
                 </ul>
             </div>
         </div>
@@ -184,6 +189,16 @@
         animation: slide-out 1s ease-out forwards;
         transition: opacity 1s;
         opacity: 0;
+        /* position absolute makes the slide-move transition smoother when deleting items */
+        position: absolute;
+        width: 556px;
+    }
+
+    /* used for the transition-group (i.e. JS animation) */
+    /* this is not related to keyframes */
+    /* Vue will use translateY or translateX whenever it's appropriate to use them */
+    .slide-move {
+        transition: transform 1s;
     }
 
     @keyframes slide-in {

@@ -8,15 +8,15 @@
 
 <script>
 export default {
-    data() {
-        return {
-            id: this.$route.params.id
-        }
-    },
+    // data() {
+    //     return {
+    //         id: this.$route.params.id
+    //     }
+    // },
     methods: {
         navigateToHome() {
             this.$router.push('/')
-        } 
+        }
     }
 }
 </script>

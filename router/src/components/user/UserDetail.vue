@@ -25,6 +25,15 @@ export default {
                 hash: '#data'
             }
         }
+    },
+    beforeRouteEnter(to, from, next) {
+        // check e.g. if the user is allowed to visit the page
+        if(true) {
+            next();
+        } else {
+            next(false);
+        }
+        
     }
 }
 </script>

@@ -19,6 +19,13 @@ const router = new VueRouter({
   }
 })
 
+router.beforeEach((to, from, next) => {
+  // this gets executed all the time, so use it for generic checks
+  console.log('global beforeEach');
+  //let the request continue its journey (abort: next(false), redirect: next('/user'))
+  next();
+})
+
 new Vue({
   el: '#app',
   router,

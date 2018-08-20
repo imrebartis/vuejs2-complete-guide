@@ -1,15 +1,28 @@
-import User from './components/user/User.vue'
-import UserStart from './components/user/UserStart.vue'
-import UserDetail from './components/user/UserDetail.vue'
-import UserEdit from './components/user/UserEdit.vue'
-import Home from './components/user/Home.vue'
+import Home from './components/Home.vue'
 import Header from './components/Header.vue'
 
-// function dynamicPropsFn() {
-//     return {
-//         id: this.$route.params.id
-//     }
-// }
+const User = resolve => {
+    // asynchronous function for lazy loading routes
+    require.ensure(['./components/user/User.vue'], () => {
+        resolve(require('./components/user/User.vue'));
+    }, 'user');
+}
+
+const UserStart = resolve => {
+    require.ensure(['./components/user/UserStart.vue'], () => {
+        resolve(require('./components/user/UserStart.vue'));
+    }, 'user');
+};
+const UserEdit = resolve => {
+    require.ensure(['./components/user/UserEdit.vue'], () => {
+        resolve(require('./components/user/UserEdit.vue'));
+    }, 'user');
+};
+const UserDetail = resolve => {
+    require.ensure(['./components/user/UserDetail.vue'], () => {
+        resolve(require('./components/user/UserDetail.vue'));
+    }, 'user');
+};
 
 export const routes = [
     {path: '/', name: 'home', components: {
@@ -28,8 +41,7 @@ export const routes = [
         }}
     ]},  
     { path: '/redirect-me', redirect: { name: 'home' }},
-    { path: '*', redirect: '/'}
-    // {path: '/user/:id', component: User, props: dynamicPropsFn},   
+    { path: '*', redirect: '/'} 
 ]
 
 // examples of route params via 'props' vue-router 2.2:

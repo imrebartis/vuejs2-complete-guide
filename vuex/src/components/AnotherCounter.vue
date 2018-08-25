@@ -1,13 +1,18 @@
 <template>
-    <p>Counter is: {{ counter }}</p>
+    <div>
+        <button class="btn btn-primary" @click="increment">Increment</button>
+        <button class="btn btn-primary" @click="decrement">Decrement</button>
+    </div>
 </template>
 
 <script>
+    import {mapMutations} from 'vuex';
     export default {
-        computed: {
-            counter() {
-                return this.$store.state.counter * 2;
-            }
+        methods: {
+            ...mapMutations([
+                'increment',
+                'decrement'
+            ])
         }
     }
 </script>

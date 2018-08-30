@@ -1,14 +1,15 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import counter from './modules/counter';
-import * as actions from './actions';
-import * as mutations from './modules/mutations';
-import * as getters from './modules/getters';
+
+import actions from './actions';
+import getters from './getters';
+import mutations from './mutations';
 
 Vue.use(Vuex);
+
 export const store = new Vuex.Store({
     state: {
-        counter: 0,
         value: 0
     },
     getters,

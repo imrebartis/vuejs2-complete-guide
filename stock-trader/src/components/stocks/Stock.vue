@@ -3,8 +3,8 @@
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    NAME
-                    <small>(Price: PRICE)</small>
+                    {{stock.name}}
+                    <small>(Price: {{stock.price}})</small>
                 </h3>
             </div>
             <div class="panel-body">
@@ -13,11 +13,14 @@
                             type="number"
                             class="form-control"
                             placeholder="Quantity"
+                            v-model="quantity"
                             >
                 </div>
                 <div class="pull-right">
                     <button
                         class="btn btn-success"
+                        @click = "buyStock"
+                        :disabled="quantity <= 0 || !Number.isInteger(+quantity)"
                         >Buy</button>
                 </div>
             </div>
@@ -27,7 +30,23 @@
 
 <script>
     export default {
-        
+        props: ['stock'],
+        data() {
+            return {
+                quantity: 0
+            }
+        },
+        methods: {
+            buyStock() {
+                const order = {
+                    stockId: this.stock.id,
+                    stockPrice: this.stock.price,
+                    quantity: this.quantity
+                };
+                console.log(order);
+                this.quantity = null;
+            }
+        }
     }
 </script>
 

@@ -12,6 +12,10 @@ const mutations = {
         state.stocks.map(stock => {
             stock.price += Math.round(stock.price * (.5 - Math.random())/4);
         })
+    },
+    'SET_PORTFOLIO' (state, portfolio) {
+        state.funds = portfolio.funds;
+        state.stocks = portfolio.stockPortfolio ? portfolio.stockPortfolio : [];
     }
 };
 

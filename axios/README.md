@@ -1,4 +1,4 @@
-# vue-update
+# vue-axios
 
 > Vue Auth & more
 

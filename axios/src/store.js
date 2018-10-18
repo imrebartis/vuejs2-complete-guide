@@ -52,13 +52,19 @@ export default new Vuex.Store({
       })
       .catch(error => console.log(error))
     },
-    storeUser({commit}, userData) {
-      globalAxios.post('/users.json', userData)
+    storeUser({commit, state}, userData) {
+      if(!state.idToken) {
+        return 
+      }
+      globalAxios.post('/users.json' + '?auth=' +state.idToken, userData)
         .then(res => console.log(res))
         .catch(error => console.log(error))
     },
-    fetchUser({commit}) {
-      axios.get('/users.json')
+    fetchUser({commit, state}) {
+      if(!state.idToken) {
+        return 
+      }
+      globalAxios.get('/users.json' + '?auth=' +state.idToken)
       .then(res => {
         console.log(res)
         const data = res.data
@@ -69,7 +75,7 @@ export default new Vuex.Store({
           users.push(user)
         }
         console.log(users)
-        commit('storeUser', users[0])
+        commit('storeUser', users[2])
       })
       .catch(error => console.log(error))
     }

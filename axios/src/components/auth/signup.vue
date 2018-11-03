@@ -8,7 +8,7 @@
                   type="email"
                   id="email"
                   @blur="$v.email.$touch()"
-                  v-model="email">
+                  v-model.lazy="email">
                   <p v-if="!$v.email.email">Please provide a valid email address.</p>
                   <p v-if="!$v.email.required">This field must not be empty.</p>
         </div>
@@ -18,7 +18,7 @@
                   type="number"
                   id="age"
                   @blur="$v.age.$touch()"
-                  v-model.number="age">
+                  v-model.number.lazy="age">
                   <p v-if="!$v.age.minVal">You have to be at least {{$v.age.$params.minVal.min }} years old.</p>
         </div>
         <div class="input" :class="{invalid: $v.password.$error}">
@@ -84,6 +84,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import {
   required,
   email,
@@ -109,7 +110,13 @@ export default {
       required,
       email,
       unique: val => {
-        return val !== 'test@test.com'
+        if (val === '') return true
+        return axios.get('/users.json?orderBy="email"&equalTo="' + val +'"')
+          .then(res => {
+            // if response is an empty object, i.e. the number of its keys is 0, the email address
+            // hasn't been taken yet
+            return Object.keys(res.data).length === 0
+          })
       }
     },
     age: {
